@@ -4,9 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMSample"
+        xmlns:viewModel="clr-namespace:MVVMSample.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <!--<Window.DataContext>
+        <ViewModel:MainWindowViewModel/>
+    </Window.DataContext>-->
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Path=Books}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path = Title}"></TextBlock> 
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold">Автор</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold">Наименование</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold">Автор</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold">Наименование</TextBlock>
+            
+        </Grid>
     </Grid>
 </Window>
