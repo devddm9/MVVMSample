@@ -8,6 +8,10 @@ using MVVMSample.Model;
 
 namespace MVVMSample.ViewModel
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         Book[] books;
