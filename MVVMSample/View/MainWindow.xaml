@@ -15,14 +15,14 @@
             <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Path=Books}" >
+        <ListBox ItemsSource="{Binding Path=Books}" SelectedItem="{Binding Path=SelectedBook, Mode=TwoWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path = Title}"></TextBlock> 
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Grid>
+        <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition/>
@@ -32,10 +32,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold">Автор</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold">Наименование</TextBlock>
-            <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold">Автор</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold">Наименование</TextBlock>
-            
-        </Grid>
+            <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold">Наименование</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=SelectedBook.Author}"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=SelectedBook.Title}" ></TextBlock>
+        </Grid>    
     </Grid>
 </Window>

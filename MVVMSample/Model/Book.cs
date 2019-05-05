@@ -35,6 +35,15 @@ namespace MVVMSample.Model
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-       
+
+        public static Book[] GetBooks()
+        {
+            var result = new[] {
+                new Book() { Author = " Лев Толстой", Title = "Война и мир " },
+                new Book() { Author = " Лев Толстой2", Title = "Война и мир2 " },
+                new Book() { Author = " Лев Толстой3", Title = "Война и мир3 " }
+            };
+            return result;
+        }
     }
 }
