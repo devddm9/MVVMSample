@@ -15,8 +15,14 @@ namespace MVVMSample.ViewModel
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         Book[] books;
-        public Book[] Books { get; private set; }
 
+        public MainWindowViewModel(Book[] books)
+        {
+            this.books = books;
+        }
+
+        public Book[] Books { get; private set; }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged(string PropertyName)
         {
