@@ -15,6 +15,10 @@
             <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
         <ListBox ItemsSource="{Binding Path=Books}" SelectedItem="{Binding Path=SelectedBook, Mode=TwoWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -35,6 +39,10 @@
             <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold">Наименование</TextBlock>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=SelectedBook.Author}"></TextBlock>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=SelectedBook.Title}" ></TextBlock>
-        </Grid>    
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button Command="{Binding Path=AddCommand}">Добавить</Button>
+            <Button Command="{Binding Path=RemoveCommand}" CommandParameter="{Binding Path=SelectedBook}">Удалить</Button>
+        </StackPanel>
     </Grid>
 </Window>

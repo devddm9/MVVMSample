@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MVVMSample.Model;
 
 namespace MVVMSample.ViewModel
@@ -15,15 +17,31 @@ namespace MVVMSample.ViewModel
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         Book[] books;
-        public Book[] Books { get; private set; }
+        public ObservableCollection<Book> Books { get; private set; }
         Book selectedBook;
 
         public MainWindowViewModel()
         {
-            Books = Book.GetBooks();
+            Books = new ObservableCollection<Book>(Book.GetBooks());
+            AddCommand = new DelegateCommand(AddBook);
+            RemoveCommand = new DelegateCommand(RemoveBook,CanRemoveBook);
         }
 
-       
+        bool CanRemoveBook(object arg)
+        {
+            return (arg as Book) != null;
+        }
+
+        void AddBook(object obj)
+        {
+            Books.Add(new Model.Book { Author = "Тест", Title = "Все все равно" });
+        }
+
+        void RemoveBook(object obj)
+        {
+            Books.Remove((Book)obj);
+        }
+
         public Book SelectedBook
         {
             get
@@ -37,6 +55,9 @@ namespace MVVMSample.ViewModel
                 OnPropertyChanged("SelectedBook");
             }
         }
+
+        public ICommand AddCommand { get; private set; }
+        public ICommand RemoveCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
